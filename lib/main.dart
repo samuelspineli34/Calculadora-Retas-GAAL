@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:calculadora_retas/math_functions.dart';
 /**
  * Entrada: Ponto e Vetor
  * 1) Escrever equação vetorial da reta
@@ -16,6 +16,12 @@ import 'package:flutter/material.dart';
  * 2) Dada uma reta e um plano, calcular o ponto de interseção e o ângulo
  * entre o plano e a reta
  **/
+
+TextEditingController point_a = TextEditingController ();
+TextEditingController point_b = TextEditingController ();
+TextEditingController point_c = TextEditingController ();
+double vsize = 0.0;
+
 
 void main() {
   runApp(const MyApp());
@@ -58,9 +64,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Column(
           children: <Widget>[
+            Container(padding: EdgeInsets.all(2), child: TextField(controller: point_a, decoration: InputDecoration(border: InputBorder.none,icon: Icon(Icons.control_point_rounded), hintText: "Digite o ponto A"),),),
+            Container(padding: EdgeInsets.all(2), child: TextField(controller: point_b, decoration: InputDecoration(border: InputBorder.none,icon: Icon(Icons.control_point_rounded), hintText: "Digite o ponto B"),),),
+            Container(padding: EdgeInsets.all(2), child: TextField(controller: point_c, decoration: InputDecoration(border: InputBorder.none,icon: Icon(Icons.control_point_rounded), hintText: "Digite o ponto C"),),),
+            ElevatedButton(onPressed: (){vsize = math_functions().vector_size(point_a, point_b, point_c);
+            }, child: Text("Calcular")),
+            //ElevatedButton(onPressed: (){print("Resultado: "+ vsize.toString());}, child: Text("Resultado")),
+
           ],
         ),
       ),
