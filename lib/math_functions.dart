@@ -45,7 +45,7 @@ class math_functions{
 
     product = double.parse(point_a.text)*double.parse(point_a2.text) + double.parse(point_b.text)*double.parse(point_b2.text) +
         double.parse(point_c.text)*double.parse(point_c2.text);
-    print("Produto do vetor: " + product.toString());
+    print("Produto do vetor: " + product.toStringAsFixed(2));
 
 
     return product;
@@ -55,7 +55,8 @@ class math_functions{
     /** |u| = sqrt(x1^2 + y1^2 + z1^2) **/
     double vsize = 0.0;
     vsize = sqrt(pow(double.parse(point_a.text),2)+pow(double.parse(point_b.text),2)+pow(double.parse(point_c.text),2));
-    print("Tamanho do vetor: " + vsize.toString());
+    print("Tamanho do vetor: " + vsize.toStringAsFixed(2));
+
     return vsize;
   }
 
