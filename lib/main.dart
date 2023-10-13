@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 // Calcula tamanho do vetor 1
-                vsize = math_functions().vector_size(context, point_a, point_b, point_c);
+                vsize = math_functions().vector_size(1, context, point_a, point_b, point_c);
               },
               child: Text("Calcular tamanho vetor 1"),
             ),
@@ -175,36 +175,48 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 // Calcula tamanho do vetor 2
                 vsize =
-                    math_functions().vector_size(context, point_a2, point_b2, point_c2);
+                    math_functions().vector_size(1, context, point_a2, point_b2, point_c2);
               },
               child: Text("Calcular tamanho vetor 2"),
             ),
             ElevatedButton(
               onPressed: () {
                 // Calcula produto escalar
-                vsize = math_functions().prod(context,
+                vsize = math_functions().prod(1, context,
                     point_a, point_b, point_c, point_a2, point_b2, point_c2);
               },
               child: Text("Calcular produto escalar"),
             ),
             ElevatedButton(
               onPressed: () {
-                // A fazer
+                math_functions().vector_equation(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
               },
               child: Text("Calcular equação vetorial da reta"),
             ),
-              ElevatedButton(
-                onPressed: () {
-                  // A fazer
-                },
-                child: Text("Calcular equação paramétrica da reta"),
+            ElevatedButton(
+              onPressed: () {
+                math_functions().parametric_equation(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
+              },
+              child: Text("Calcular equação paramétrica da reta"),
             ),
-        ElevatedButton(
-          onPressed: () {
-            // A fazer
-          },
-          child: Text("Calcular posição relativa da reta"),
-        ),
+            ElevatedButton(
+              onPressed: () {
+                math_functions().vector_position(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
+              },
+              child: Text("Calcular posição relativa da reta"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // A fazer
+              },
+              child: Text("Calcular equação do plano"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // A fazer
+              },
+              child: Text("Calcular ponto de interseção do plano na reta"),
+            ),
           ],
         ),
       ),
