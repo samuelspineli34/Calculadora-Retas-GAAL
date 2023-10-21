@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Add your logic here
+                  dadosReta(context);
                 },
                 child: Text('2 - Verificar a Posição Relativa de Duas Retas'),
               ),
