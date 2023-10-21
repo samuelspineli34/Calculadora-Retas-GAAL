@@ -110,7 +110,7 @@ class math_functions {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Resultado"),
-          content: Text("($a, $b, $c) = ($a, $b, $c) + t($a2, $b2, $c2) "),
+          content: Text("r(t) = ($a, $b, $c) + t * ($a2, $b2, $c2), { t pertence a R }"),
           actions: <Widget>[
             TextButton(
               child: Text("Fechar"),
@@ -154,7 +154,7 @@ class math_functions {
         return AlertDialog(
           title: Text("Resultado"),
           content:
-              Text(" r = x = $a + $a2 t\n y = $b + $b2 t\n z = $c + $c2 t\n"),
+              Text(" r(t) = \n x = $a + $a2 t\n y = $b + $b2 t\n z = $c + $c2 t\n"),
           actions: <Widget>[
             TextButton(
               child: Text("Fechar"),

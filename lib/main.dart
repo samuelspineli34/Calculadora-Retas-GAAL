@@ -1,226 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:calculadora_retas/math_functions.dart';
-/**
- * Entrada: Ponto e Vetor
- * 1) Escrever equação vetorial da reta
- * 2) Escrever equação paramétrica da reta
- * 3) Verificar posição relativa das retas:
- *    Paralelas: Distintas
- *               Coincidentes
- *    Concorrentes: Ponto de   interseção
- *                  Ângulo
- *    Reversos
- *
- * Entrada: Ponto e Vetor Normal
- * 1) Determinar equação geral do plano
- * 2) Dada uma reta e um plano, calcular o ponto de interseção e o ângulo
- * entre o plano e a reta
- **/
-import 'package:flutter/material.dart';
-// Import your math_functions.dart file here if it's defined
+import 'utils.dart';
 
-TextEditingController point_a = TextEditingController();
-TextEditingController point_b = TextEditingController();
-TextEditingController point_c = TextEditingController();
-TextEditingController point_a2 = TextEditingController();
-TextEditingController point_b2 = TextEditingController();
-TextEditingController point_c2 = TextEditingController();
-double vsize = 0.0;
-
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Calculadora de retas',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.lightGreen,
       ),
-      home: const MyHomePage(title: 'Calculadora de retas'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-    title: Text(widget.title),
-    ),
-    body: SingleChildScrollView(
-    child: Center(
-    child: Column(
-    children: <Widget>[
-            Container(padding: EdgeInsets.all(3),child:
-            Text("Reta 1", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold))
-            ),
-            Row(children: <Widget>[
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(1.5),
-                  child: TextField(
-                    maxLength: 5,
-                    controller: point_a,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      icon: Icon(Icons.control_point_rounded),
-                      hintText: "Ponto X1",
-                    ),
-                  ),
-                ),
+      appBar: AppBar(
+        title: Text("Calculadora Retas e Planos"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Container(
+          margin: EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  equacaoVetorial(context);
+                },
+                child: Text('1- Equação Vetorial e Paramétrica da Reta'),
               ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(1.5),
-                  child: TextField(
-                    maxLength: 5,
-                    controller: point_b,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      icon: Icon(Icons.control_point_rounded),
-                      hintText: "Ponto Y1",
-                    ),
-                  ),
-                ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your logic here
+                },
+                child: Text('2 - Verificar a Posição Relativa de Duas Retas'),
               ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(1.5),
-                  child: TextField(
-                    maxLength: 5,
-                    controller: point_c,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      icon: Icon(Icons.control_point_rounded),
-                      hintText: "Ponto Z1",
-                    ),
-                  ),
-                ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your logic here
+                },
+                child: Text('3 - Equação do Plano e Ponto de Interceção da Reta'),
               ),
-            ]),
-            Container(padding: EdgeInsets.all(3),child:
-            Text("Reta 2", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold))
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(1.5),
-                    child: TextField(
-                      maxLength: 5,
-                      controller: point_a2,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        icon: Icon(Icons.control_point_rounded),
-                        hintText: "Ponto X2",
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(1.5),
-                    child: TextField(
-                      maxLength: 5,
-                      controller: point_b2,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        icon: Icon(Icons.control_point_rounded),
-                        hintText: "Ponto Y2",
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(1.5),
-                    child: TextField(
-                      maxLength: 5,
-                      controller: point_c2,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        icon: Icon(Icons.control_point_rounded),
-                        hintText: "Ponto Z2",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Calcula tamanho do vetor 1
-                vsize = math_functions().vector_size(1, context, point_a, point_b, point_c);
-              },
-              child: Text("Calcular tamanho vetor 1"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Calcula tamanho do vetor 2
-                vsize =
-                    math_functions().vector_size(1, context, point_a2, point_b2, point_c2);
-              },
-              child: Text("Calcular tamanho vetor 2"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Calcula produto escalar
-                vsize = math_functions().prod(1, context,
-                    point_a, point_b, point_c, point_a2, point_b2, point_c2);
-              },
-              child: Text("Calcular produto escalar"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                math_functions().vector_equation(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
-              },
-              child: Text("Calcular equação vetorial da reta"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                math_functions().parametric_equation(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
-              },
-              child: Text("Calcular equação paramétrica da reta"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                math_functions().vector_position(context, point_a, point_b, point_c, point_a2, point_b2, point_c2);
-              },
-              child: Text("Calcular posição relativa da reta"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // A fazer
-              },
-              child: Text("Calcular equação do plano"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // A fazer
-              },
-              child: Text("Calcular ponto de interseção do plano na reta"),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
     );
   }
 }
