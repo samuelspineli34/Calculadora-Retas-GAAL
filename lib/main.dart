@@ -46,9 +46,16 @@ class MyHomePage extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Add your logic here
+                  showEquationOfPlaneDialog(context);
                 },
-                child: Text('3 - Equação do Plano e Ponto de Interceção da Reta'),
+                child: Text('3 - Equação do Plano'),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  showIntersectionAndAngleDialog(context);
+                },
+                child: Text('4 - Ponto de Interseção da reta com o plano e o ângulo.'),
               ),
             ],
           ),
