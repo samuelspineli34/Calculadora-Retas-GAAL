@@ -39,6 +39,7 @@ class MyHomePage extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  dadosReta(context);
                   // Add your logic here
                 },
                 child: Text('2 - Verificar a Posição Relativa de Duas Retas'),
@@ -48,7 +49,15 @@ class MyHomePage extends StatelessWidget {
                 onPressed: () {
                   // Add your logic here
                 },
-                child: Text('3 - Equação do Plano e Ponto de Interceção da Reta'),
+                child:
+                    Text('3 - Equação do Plano e Ponto de Interceção da Reta'),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  gerarGrafico(context);
+                },
+                child: Text('4 - Mostrar Gráfico de 2 retas'),
               ),
             ],
           ),
