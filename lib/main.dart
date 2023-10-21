@@ -1,66 +1,20 @@
 import 'package:flutter/material.dart';
-import 'utils.dart';
+import 'home_front.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Trabalho Prático 01',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Calculadora Retas e Planos"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  equacaoVetorial(context);
-                },
-                child: Text('1- Equação Vetorial e Paramétrica da Reta'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  dadosReta(context);
-                },
-                child: Text('2 - Verificar a Posição Relativa de Duas Retas'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  showEquationOfPlaneDialog(context);
-                },
-                child: Text('3 - Equação do Plano'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  showIntersectionAndAngleDialog(context);
-                },
-                child: Text('4 - Ponto de Interseção da reta com o plano e o ângulo.'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(),
     );
   }
 }
